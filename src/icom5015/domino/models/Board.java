@@ -30,7 +30,7 @@ public class Board {
 
 
 
-    public Board(Domino center, int Player){
+    public Board(Domino center, int player){
 
         p1 = new ArrayList<Domino>();
         p2 = new ArrayList<Domino>();
@@ -46,6 +46,7 @@ public class Board {
         this.lowerValue = center.getUpperSide();
 
         updateValue(center);
+        updatePlayerList(player, center);
 
 
 
@@ -72,6 +73,7 @@ public class Board {
         this.upperValue = upper.getUpperSide();
 
         updateValue(upper);
+        updatePlayerList(player, upper);
 
     }
 
@@ -97,6 +99,7 @@ public class Board {
 
         this.lowerValue = lower.getLowerSide();
         updateValue(lower);
+        updatePlayerList(player, lower);
 
     }
 
