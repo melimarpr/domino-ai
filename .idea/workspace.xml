@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fda6f1c-eab4-4de6-8415-08ffc800f050" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/icom5015/domino/models/implementations/BlindPlayer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/icom5015/domino/controllers/implementation/AutomationDominoGame.java" afterPath="$PROJECT_DIR$/src/icom5015/domino/controllers/implementation/AutomationDominoGame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/icom5015/domino/models/Board.java" afterPath="$PROJECT_DIR$/src/icom5015/domino/models/Board.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/icom5015/domino/controllers/implementation/ConsoleDominoGame.java" afterPath="$PROJECT_DIR$/src/icom5015/domino/controllers/implementation/ConsoleDominoGame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/icom5015/domino/models/Domino.java" afterPath="$PROJECT_DIR$/src/icom5015/domino/models/Domino.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/icom5015/domino/generators/HandGenerator.java" afterPath="$PROJECT_DIR$/src/icom5015/domino/generators/HandGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="domino-ai.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,8 +31,8 @@
       <file leaf-file-name="ConsoleDominoGame.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/icom5015/domino/controllers/implementation/ConsoleDominoGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.4777448" vertical-offset="1689" max-vertical-offset="4200">
-              <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.013452915" vertical-offset="3261" max-vertical-offset="4230">
+              <caret line="232" column="44" selection-start-line="232" selection-start-column="44" selection-end-line="232" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -44,8 +41,8 @@
       <file leaf-file-name="AutomationDominoGame.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/icom5015/domino/controllers/implementation/AutomationDominoGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="2115">
-              <caret line="60" column="62" selection-start-line="60" selection-start-column="62" selection-end-line="60" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="1920">
+              <caret line="62" column="40" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -54,7 +51,7 @@
       <file leaf-file-name="HumanPlayer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/icom5015/domino/models/implementations/HumanPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1155" max-vertical-offset="1245">
+            <state vertical-scroll-proportion="0.0" vertical-offset="576" max-vertical-offset="1245">
               <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding />
             </state>
@@ -64,7 +61,7 @@
       <file leaf-file-name="DominoGame.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/icom5015/domino/controllers/DominoGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="1005">
+            <state vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="930">
               <caret line="48" column="9" selection-start-line="35" selection-start-column="7" selection-end-line="48" selection-end-column="9" />
               <folding />
             </state>
@@ -84,8 +81,18 @@
       <file leaf-file-name="Domino.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/icom5015/domino/models/Domino.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1515">
-              <caret line="12" column="62" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="249" max-vertical-offset="1410">
+              <caret line="58" column="32" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -104,8 +111,8 @@
       <file leaf-file-name="Board.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/icom5015/domino/models/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2790" max-vertical-offset="3255">
-              <caret line="186" column="20" selection-start-line="186" selection-start-column="20" selection-end-line="186" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2526" max-vertical-offset="3420">
+              <caret line="187" column="22" selection-start-line="187" selection-start-column="22" selection-end-line="187" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -145,12 +152,12 @@
         <option value="$PROJECT_DIR$/src/icom5015/domino/models/implementations/RandomPlayer.java" />
         <option value="$PROJECT_DIR$/src/icom5015/domino/models/Player.java" />
         <option value="$PROJECT_DIR$/src/icom5015/domino/models/implementations/HumanPlayer.java" />
-        <option value="$PROJECT_DIR$/src/icom5015/domino/models/Domino.java" />
         <option value="$PROJECT_DIR$/src/icom5015/domino/generators/HandGenerator.java" />
         <option value="$PROJECT_DIR$/src/icom5015/domino/models/implementations/BlindPlayer.java" />
-        <option value="$PROJECT_DIR$/src/icom5015/domino/controllers/implementation/AutomationDominoGame.java" />
-        <option value="$PROJECT_DIR$/src/icom5015/domino/models/Board.java" />
+        <option value="$PROJECT_DIR$/src/icom5015/domino/models/Domino.java" />
         <option value="$PROJECT_DIR$/src/icom5015/domino/controllers/implementation/ConsoleDominoGame.java" />
+        <option value="$PROJECT_DIR$/src/icom5015/domino/models/Board.java" />
+        <option value="$PROJECT_DIR$/src/icom5015/domino/controllers/implementation/AutomationDominoGame.java" />
       </list>
     </option>
   </component>
@@ -336,6 +343,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="implementation" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="domino-ai" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="domino-ai" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -547,11 +568,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1129" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32916266" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -565,7 +586,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24813631" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24813631" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5785921" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -622,7 +643,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/icom5015/domino/models/Domino.java</url>
-          <line>84</line>
+          <line>85</line>
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
@@ -727,6 +748,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="1065">
           <caret line="58" column="20" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -774,6 +796,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="720">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#491#499#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -813,6 +838,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="810">
           <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <folding>
+            <element signature="e#491#499#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -844,6 +872,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="765">
           <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+          <folding>
+            <element signature="e#491#499#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -887,13 +918,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="620">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/icom5015/domino/models/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1950">
@@ -914,6 +938,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
           <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+          <folding>
+            <element signature="e#491#499#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -929,6 +956,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3012884" vertical-offset="86" max-vertical-offset="1470">
           <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#584#592#0" expanded="true" />
+            <element signature="e#1239#1247#0" expanded="true" />
+            <element signature="e#1679#1687#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -936,13 +969,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49058473" vertical-offset="0" max-vertical-offset="1009">
           <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/icom5015/domino/models/implementations/HumanPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="596" max-vertical-offset="1125">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -951,6 +977,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="491" max-vertical-offset="990">
           <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15315">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1011">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/icom5015/domino/models/implementations/HumanPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="596" max-vertical-offset="1125">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -965,32 +1015,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/icom5015/domino/models/Domino.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1395">
-          <caret line="12" column="62" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/icom5015/domino/controllers/implementation/AutomationDominoGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1646" max-vertical-offset="2055">
-          <caret line="60" column="62" selection-start-line="60" selection-start-column="62" selection-end-line="60" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="249" max-vertical-offset="1410">
+          <caret line="58" column="32" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/icom5015/domino/models/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2756" max-vertical-offset="3165">
-          <caret line="186" column="20" selection-start-line="186" selection-start-column="20" selection-end-line="186" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2526" max-vertical-offset="3420">
+          <caret line="187" column="22" selection-start-line="187" selection-start-column="22" selection-end-line="187" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/icom5015/domino/controllers/implementation/AutomationDominoGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="1920">
+          <caret line="62" column="40" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/icom5015/domino/controllers/implementation/ConsoleDominoGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4777448" vertical-offset="1689" max-vertical-offset="4200">
-          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.013452915" vertical-offset="3261" max-vertical-offset="4230">
+          <caret line="232" column="44" selection-start-line="232" selection-start-column="44" selection-end-line="232" selection-end-column="44" />
           <folding />
         </state>
       </provider>

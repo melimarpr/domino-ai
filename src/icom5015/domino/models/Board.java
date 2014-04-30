@@ -172,7 +172,27 @@ public class Board {
         return totals[tile];
     }
 
-    public List<Domino> getMovePlayerByPlayer(int player){
+    public void setPass(int player){
+        switch (player){
+            case Player.PLAYER_1:
+                p1.add(new Domino(Domino.PASS_VALUE, Domino.PASS_VALUE));
+                break;
+            case Player.PLAYER_2:
+                p2.add(new Domino(Domino.PASS_VALUE, Domino.PASS_VALUE));
+                break;
+            case Player.PLAYER_3:
+                p3.add(new Domino(Domino.PASS_VALUE, Domino.PASS_VALUE));
+                break;
+            case Player.PLAYER_4:
+                p4.add(new Domino(Domino.PASS_VALUE, Domino.PASS_VALUE));
+                break;
+
+        }
+    }
+
+    //If Domino Upperside || Lowerside == Pass
+    // Move was pass
+    public List<Domino> getMoveOfPlayer(int player){
         switch (player){
             case Player.PLAYER_1:
                 return p1;

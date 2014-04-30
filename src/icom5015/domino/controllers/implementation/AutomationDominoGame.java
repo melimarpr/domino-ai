@@ -60,6 +60,7 @@ public class AutomationDominoGame extends DominoGame {
             } else if (move.getPlayedSide() == Domino.LOWER_SIDE) {
                 board.setLowerValue(move.getDomino(), order[i]);
             } else { //Pass
+                board.setPass(order[i]);
                 passCounter++;
             }
         }
@@ -78,6 +79,7 @@ public class AutomationDominoGame extends DominoGame {
                     board.setLowerValue(move.getDomino(), order[i]);
                     passCounter = 0;
                 } else { //Pass
+                    board.setPass(order[i]);
                     passCounter++;
                 }
 

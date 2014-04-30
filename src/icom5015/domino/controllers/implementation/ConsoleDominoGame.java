@@ -172,6 +172,7 @@ public class ConsoleDominoGame extends DominoGame {
                 board.setLowerValue(move.getDomino(), order[i]);
                 passCounter = 0;
             } else { //Pass
+                board.setPass(order[i]);
                 passCounter++;
                 if(printAll){
                     System.out.println("Pass");
@@ -212,6 +213,7 @@ public class ConsoleDominoGame extends DominoGame {
                     board.setLowerValue(move.getDomino(), order[i]);
                     passCounter = 0;
                 } else { //Pass
+                    board.setPass(order[i]);
                     passCounter++;
                     if(printAll){
                         System.out.println("Pass");

@@ -10,7 +10,8 @@ public class Domino {
     //Side Constance
     public static final int UPPER_SIDE = -1;
     public static final int LOWER_SIDE = -2;
-    public static final int BLIND_VALUE = Integer.MIN_VALUE-1;
+    public static final int BLIND_VALUE = -10;
+    public static final int PASS_VALUE = -11;
     public static final int ERROR = Integer.MIN_VALUE;
 
 
