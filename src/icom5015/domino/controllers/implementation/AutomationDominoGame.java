@@ -47,7 +47,7 @@ public class AutomationDominoGame extends DominoGame {
 
         Player firstPlayer = players.get(order[0]);
         Domino doubleSix = firstPlayer.getDoubleSix();
-        Board board = new Board(doubleSix);
+        Board board = new Board(doubleSix, order[0]);
 
         //Other Players
         for (int i = 1; i < order.length; i++) {
@@ -56,9 +56,9 @@ public class AutomationDominoGame extends DominoGame {
 
 
             if (move.getPlayedSide() == Domino.UPPER_SIDE) {
-                board.setUpperValue(move.getDomino());
+                board.setUpperValue(move.getDomino(), order[i]);
             } else if (move.getPlayedSide() == Domino.LOWER_SIDE) {
-                board.setLowerValue(move.getDomino());
+                board.setLowerValue(move.getDomino(), order[i]);
             } else { //Pass
                 passCounter++;
             }
@@ -72,10 +72,10 @@ public class AutomationDominoGame extends DominoGame {
                 Player.Move move = actualPlayer.getDomino(board);
 
                 if (move.getPlayedSide() == Domino.UPPER_SIDE) {
-                    board.setUpperValue(move.getDomino());
+                    board.setUpperValue(move.getDomino(), order[i]);
                     passCounter = 0;
                 } else if (move.getPlayedSide() == Domino.LOWER_SIDE) {
-                    board.setLowerValue(move.getDomino());
+                    board.setLowerValue(move.getDomino(), order[i]);
                     passCounter = 0;
                 } else { //Pass
                     passCounter++;

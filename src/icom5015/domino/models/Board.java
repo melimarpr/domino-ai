@@ -1,5 +1,8 @@
 package icom5015.domino.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by enrique on 4/29/14.
  */
@@ -20,8 +23,19 @@ public class Board {
     public DominoNode upperBoardNode;
     public DominoNode lowerBoardNode;
 
+    private List<Domino> p1;
+    private List<Domino> p2;
+    private List<Domino> p3;
+    private List<Domino> p4;
 
-    public Board(Domino center){
+
+
+    public Board(Domino center, int Player){
+
+        p1 = new ArrayList<Domino>();
+        p2 = new ArrayList<Domino>();
+        p3 = new ArrayList<Domino>();
+        p4 = new ArrayList<Domino>();
 
         //Set Center Board
         centerNode = new DominoNode(null, null, center);
@@ -33,10 +47,12 @@ public class Board {
 
         updateValue(center);
 
+
+
     }
 
 
-    public void setUpperValue(Domino upper){
+    public void setUpperValue(Domino upper, int player){
 
         if(upper.getLowerSide() != this.upperValue){
             upper.rotate();
@@ -55,9 +71,11 @@ public class Board {
         }
         this.upperValue = upper.getUpperSide();
 
+        updateValue(upper);
+
     }
 
-    public void setLowerValue(Domino lower){
+    public void setLowerValue(Domino lower, int player){
 
         if(lower.getUpperSide() != this.lowerValue){
             lower.rotate();
@@ -78,6 +96,7 @@ public class Board {
         }
 
         this.lowerValue = lower.getLowerSide();
+        updateValue(lower);
 
     }
 
@@ -113,9 +132,26 @@ public class Board {
        tileCount++;
     }
 
-    public int getTileCount(){
-        return tileCount;
+    private void updatePlayerList(int player, Domino domino){
+        switch (player){
+            case Player.PLAYER_1:
+                p1.add(domino);
+                break;
+            case Player.PLAYER_2:
+                p2.add(domino);
+                break;
+            case Player.PLAYER_3:
+                p3.add(domino);
+                break;
+            case Player.PLAYER_4:
+                p4.add(domino);
+                break;
+
+        }
+
     }
+
+
 
     //Getters
     public int getLowerValue() {
@@ -126,7 +162,30 @@ public class Board {
         return upperValue;
     }
 
+    public int getTileCount(){
+        return tileCount;
+    }
 
+    public int getTotalSum(){ return sum;}
+
+    public int getTotalPlayedByTile(int tile){
+        return totals[tile];
+    }
+
+    public List<Domino> getMovePlayerByPlayer(int player){
+        switch (player){
+            case Player.PLAYER_1:
+                return p1;
+            case Player.PLAYER_2:
+                return p2;
+            case Player.PLAYER_3:
+                return p3;
+            case Player.PLAYER_4:
+                return p4;
+
+        }
+        return null;
+    }
 
 
     //Node Class

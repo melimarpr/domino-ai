@@ -6,6 +6,7 @@ import icom5015.domino.generators.HandGenerator;
 import icom5015.domino.models.Board;
 import icom5015.domino.models.Domino;
 import icom5015.domino.models.Player;
+import icom5015.domino.models.implementations.BlindPlayer;
 import icom5015.domino.models.implementations.GeneticPlayer;
 import icom5015.domino.models.implementations.HumanPlayer;
 import icom5015.domino.models.implementations.RandomPlayer;
@@ -15,9 +16,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-/**
- * Created by enrique on 4/30/14.
- */
 public class ConsoleDominoGame extends DominoGame {
 
     //Constants
@@ -25,6 +23,7 @@ public class ConsoleDominoGame extends DominoGame {
 
     //Variables
     private boolean printAll = false;
+    private boolean blind = false;
 
     private int winner = RUNNING;
     private int score = 0;
@@ -53,22 +52,22 @@ public class ConsoleDominoGame extends DominoGame {
 
 
         System.out.println("\nPlayer 1:");
-        System.out.println("1. Human Player 2.Random AI, 3.Genetic AI, 4. RandomAI (Select Tiles), 5.Genetic AI (Selected Tiles) 6. Human Player (Selected Tile)");
+        System.out.println("1. Human Player 2.Random AI, 3.Genetic AI, 4. RandomAI (Select Tiles), 5.Genetic AI (Selected Tiles), 6. Human Player (Selected Tile), 7. Blind Player");
         int playerType = in.nextInt();
         setPlayerMap(handGenerator, Player.PLAYER_1, playerType);
 
         System.out.println("\nPlayer 2:");
-        System.out.println("1. Human Player 2.Random AI, 3.Genetic AI, 4. RandomAI (Select Tiles), 5.Genetic AI (Selected Tiles) 6. Human Player (Selected Tile)");
+        System.out.println("1. Human Player 2.Random AI, 3.Genetic AI, 4. RandomAI (Select Tiles), 5.Genetic AI (Selected Tiles), 6. Human Player (Selected Tile), 7. Blind Player");
         playerType = in.nextInt();
         setPlayerMap(handGenerator, Player.PLAYER_2, playerType);
 
         System.out.println("\nPlayer 3:");
-        System.out.println("1. Human Player 2.Random AI, 3.Genetic AI, 4. RandomAI (Select Tiles), 5.Genetic AI (Selected Tiles) 6. Human Player (Selected Tile)");
+        System.out.println("1. Human Player 2.Random AI, 3.Genetic AI, 4. RandomAI (Select Tiles), 5.Genetic AI (Selected Tiles), 6. Human Player (Selected Tile), 7. Blind Player");
         playerType = in.nextInt();
         setPlayerMap(handGenerator, Player.PLAYER_3, playerType);
 
         System.out.println("\nPlayer 4:");
-        System.out.println("1. Human Player 2.Random AI, 3.Genetic AI, 4. RandomAI (Select Tiles), 5.Genetic AI (Selected Tiles) 6. Human Player (Selected Tile)");
+        System.out.println("1. Human Player 2.Random AI, 3.Genetic AI, 4. RandomAI (Select Tiles), 5.Genetic AI (Selected Tiles), 6. Human Player (Selected Tile), 7. Blind Player");
         playerType = in.nextInt();
         setPlayerMap(handGenerator, Player.PLAYER_4, playerType);
 
@@ -93,6 +92,10 @@ public class ConsoleDominoGame extends DominoGame {
             case 6:
                 players.put(player, new HumanPlayer(handGenerator.generateHand(true)));
                 break;
+            case 7:
+                players.put(player, new BlindPlayer(handGenerator.blindHand()));
+                blind = true;
+                break;
             default:
                 players.put(player, new RandomPlayer(handGenerator.generateHand(false)));
                 break;
@@ -104,14 +107,45 @@ public class ConsoleDominoGame extends DominoGame {
     @Override
     public void run() {
         init();
-        generateOrder();
+
+
+        if(blind){
+            Scanner in = new Scanner(System.in);
+            System.out.println("Select Player with Double Six");
+            System.out.println("1. Player 1, 2. Player 2, 3. Player 3, 4. Player 4");
+            int player = in.nextInt();
+            switch (player){
+
+                case 1:
+                    player = Player.PLAYER_1;
+                    break;
+                case 2:
+                    player = Player.PLAYER_2;
+                    break;
+                case 3:
+                    player = Player.PLAYER_3;
+                    break;
+                case 4:
+                    player = Player.PLAYER_4;
+                    break;
+
+            }
+            generateOrderBlind(player);
+
+        } else{
+            generateOrder();
+        }
+
+
+
+
 
         //Pass Counter
         int passCounter = 0;
 
         Player firstPlayer = players.get(order[0]);
         Domino doubleSix = firstPlayer.getDoubleSix();
-        Board board = new Board(doubleSix);
+        Board board = new Board(doubleSix, order[0]);
 
         if (printAll) {
             System.out.println("First Player: " + Player.toStringPlayer(order[0]));
@@ -132,10 +166,10 @@ public class ConsoleDominoGame extends DominoGame {
 
 
             if (move.getPlayedSide() == Domino.UPPER_SIDE) {
-                board.setUpperValue(move.getDomino());
+                board.setUpperValue(move.getDomino(), order[i]);
                 passCounter = 0;
             } else if (move.getPlayedSide() == Domino.LOWER_SIDE) {
-                board.setLowerValue(move.getDomino());
+                board.setLowerValue(move.getDomino(), order[i]);
                 passCounter = 0;
             } else { //Pass
                 passCounter++;
@@ -172,10 +206,10 @@ public class ConsoleDominoGame extends DominoGame {
 
 
                 if (move.getPlayedSide() == Domino.UPPER_SIDE) {
-                    board.setUpperValue(move.getDomino());
+                    board.setUpperValue(move.getDomino(), order[i]);
                     passCounter = 0;
                 } else if (move.getPlayedSide() == Domino.LOWER_SIDE) {
-                    board.setLowerValue(move.getDomino());
+                    board.setLowerValue(move.getDomino(), order[i]);
                     passCounter = 0;
                 } else { //Pass
                     passCounter++;
@@ -203,6 +237,23 @@ public class ConsoleDominoGame extends DominoGame {
         }
     }
 
+    private void generateOrderBlind(int player) {
+        switch (player){
+            case Player.PLAYER_1:
+                order = new int[]{Player.PLAYER_1, Player.PLAYER_2, Player.PLAYER_3, Player.PLAYER_4};
+                break;
+            case Player.PLAYER_2:
+                order = new int[]{Player.PLAYER_2, Player.PLAYER_3, Player.PLAYER_4, Player.PLAYER_1};
+                break;
+            case Player.PLAYER_3:
+                order = new int[]{Player.PLAYER_3, Player.PLAYER_4, Player.PLAYER_1, Player.PLAYER_2};
+                break;
+            case Player.PLAYER_4:
+                order = new int[]{Player.PLAYER_4, Player.PLAYER_1, Player.PLAYER_2, Player.PLAYER_3};
+                break;
+        }
+    }
+
     private int getTotalScore() {
 
         int sum = 0;
@@ -215,11 +266,11 @@ public class ConsoleDominoGame extends DominoGame {
     public int getWinnerForFullPass(int lockPlayer) {
 
         int winner = lockPlayer;
-        int max = players.get(winner).getHandSum();
+        int min = players.get(winner).getHandSum();
         for(Map.Entry<Integer, Player> e: players.entrySet()){
-            if(e.getValue().getHandSum() > max){
+            if(e.getValue().getHandSum() < min){
                 winner = e.getKey();
-                max = e.getValue().getHandSum();
+                min = e.getValue().getHandSum();
             }
         }
         return winner;

@@ -10,6 +10,7 @@ public class Domino {
     //Side Constance
     public static final int UPPER_SIDE = -1;
     public static final int LOWER_SIDE = -2;
+    public static final int BLIND_VALUE = Integer.MIN_VALUE-1;
     public static final int ERROR = Integer.MIN_VALUE;
 
 
@@ -77,6 +78,7 @@ public class Domino {
         return str.toString();
     }
 
+    //If Match
     @Override
     public boolean equals(Object obj) {
         Domino domino = (Domino) obj;
