@@ -30,10 +30,10 @@ public class AutomationDominoGame extends DominoGame {
         List<Domino> tiles = DominoGenerator.generateDominoBoard();
         HandGenerator handGenerator = new HandGenerator(tiles);
         //Set Players
-        players.put(Player.PLAYER_1, new GeneticPlayer(handGenerator.generateHand(false))); //Set Genetic Player
-        players.put(Player.PLAYER_2, new RandomPlayer(handGenerator.generateHand(false)));
-        players.put(Player.PLAYER_3, new RandomPlayer(handGenerator.generateHand(false)));
-        players.put(Player.PLAYER_4, new RandomPlayer(handGenerator.generateHand(false)));
+        players.put(Player.PLAYER_1, new GeneticPlayer(handGenerator.generateHand(false), Player.PLAYER_1)); //Set Genetic Player
+        players.put(Player.PLAYER_2, new RandomPlayer(handGenerator.generateHand(false), Player.PLAYER_2));
+        players.put(Player.PLAYER_3, new GeneticPlayer(handGenerator.generateHand(false), Player.PLAYER_3));
+        players.put(Player.PLAYER_4, new RandomPlayer(handGenerator.generateHand(false), Player.PLAYER_4));
 
     }
 
@@ -54,6 +54,9 @@ public class AutomationDominoGame extends DominoGame {
             Player actualPlayer = players.get(order[i]);
             Player.Move move = actualPlayer.getDomino(board);
 
+            /*System.out.println("\nPlayer: " + Player.toStringPlayer(order[i]));
+            System.out.println("Board:");
+            System.out.println(board.toString() + "\n");*/
 
             if (move.getPlayedSide() == Domino.UPPER_SIDE) {
                 board.setUpperValue(move.getDomino(), order[i]);
@@ -62,6 +65,7 @@ public class AutomationDominoGame extends DominoGame {
             } else { //Pass
                 board.setPass(order[i]);
                 passCounter++;
+                //System.out.println("PASS " + Player.toStringPlayer(order[i]) + " (" + passCounter + ")");
             }
         }
 
@@ -72,6 +76,10 @@ public class AutomationDominoGame extends DominoGame {
                 Player actualPlayer = players.get(order[i]);
                 Player.Move move = actualPlayer.getDomino(board);
 
+                /*System.out.println("\nPlayer: " + Player.toStringPlayer(order[i]));
+                System.out.println("Board:");
+                System.out.println(board.toString() + "\n");*/
+
                 if (move.getPlayedSide() == Domino.UPPER_SIDE) {
                     board.setUpperValue(move.getDomino(), order[i]);
                     passCounter = 0;
@@ -81,6 +89,7 @@ public class AutomationDominoGame extends DominoGame {
                 } else { //Pass
                     board.setPass(order[i]);
                     passCounter++;
+                    //System.out.println("PASS " + Player.toStringPlayer(order[i]) + " (" + passCounter + ")");
                 }
 
                 //Check For Winners

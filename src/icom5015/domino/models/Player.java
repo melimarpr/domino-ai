@@ -21,9 +21,11 @@ public abstract class Player {
 
     protected List<Domino> hand;
 
+    private int myPlayer;
 
-    public Player(List<Domino> hand){
+    public Player(List<Domino> hand, int myPlayer){
         this.hand = hand;
+        this.myPlayer = myPlayer;
     }
 
 
@@ -132,6 +134,8 @@ public abstract class Player {
         return ret;
     }
 
-
+    public int getMyPlayer() {
+        return this.myPlayer;
+    }
 
 }

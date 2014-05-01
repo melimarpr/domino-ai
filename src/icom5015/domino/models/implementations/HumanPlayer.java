@@ -14,8 +14,8 @@ import java.util.Scanner;
 public class HumanPlayer extends Player {
 
 
-    public HumanPlayer(List<Domino> hand) {
-        super(hand);
+    public HumanPlayer(List<Domino> hand, int myPlayer) {
+        super(hand, myPlayer);
     }
 
     @Override

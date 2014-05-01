@@ -14,8 +14,8 @@ public class BlindPlayer  extends Player{
 
 
 
-    public BlindPlayer(List<Domino> hand) {
-        super(hand);
+    public BlindPlayer(List<Domino> hand, int myPlayer) {
+        super(hand, myPlayer);
     }
 
     @Override

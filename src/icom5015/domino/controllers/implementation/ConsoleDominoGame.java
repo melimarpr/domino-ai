@@ -78,26 +78,26 @@ public class ConsoleDominoGame extends DominoGame {
     private void setPlayerMap(HandGenerator handGenerator, int player, int playerType){
         switch (playerType){
             case 1:
-                players.put(player, new HumanPlayer(handGenerator.generateHand(false)));
+                players.put(player, new HumanPlayer(handGenerator.generateHand(false), player));
                 break;
             case 3:
-                players.put(player, new GeneticPlayer(handGenerator.generateHand(false)));
+                players.put(player, new GeneticPlayer(handGenerator.generateHand(false), player));
                 break;
             case 4:
-                players.put(player, new RandomPlayer(handGenerator.generateHand(true)));
+                players.put(player, new RandomPlayer(handGenerator.generateHand(true), player));
                 break;
             case 5:
-                players.put(player, new GeneticPlayer(handGenerator.generateHand(true)));
+                players.put(player, new GeneticPlayer(handGenerator.generateHand(true), player));
                 break;
             case 6:
-                players.put(player, new HumanPlayer(handGenerator.generateHand(true)));
+                players.put(player, new HumanPlayer(handGenerator.generateHand(true), player));
                 break;
             case 7:
-                players.put(player, new BlindPlayer(handGenerator.blindHand()));
+                players.put(player, new BlindPlayer(handGenerator.blindHand(), player));
                 blind = true;
                 break;
             default:
-                players.put(player, new RandomPlayer(handGenerator.generateHand(false)));
+                players.put(player, new RandomPlayer(handGenerator.generateHand(false), player));
                 break;
         }
 
