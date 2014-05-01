@@ -6,9 +6,7 @@ import icom5015.domino.models.Player;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by root on 5/1/14.
@@ -35,38 +33,152 @@ import java.util.Random;
  20. 55.00000000000001 5.324250691145486,6.244492755403137,7.122866318056518,1.3003899722158074,0.6802671472329047,4.735082125222712
  21. 55.00000000000001 2.647504979190689,3.112853480801918,8.870757572030266,9.068832880418253,7.469823582685371,4.441693507493039
  22. 75.0 5.047870075331547,1.2987057267231517,8.236080462568253,8.928114594828912,8.382832320687903,0.7351352596204275
+
+ 71.0 3.777402310801171,8.69369228109311,9.824239228554687,8.586762778748142,8.743093900621716,4.78991340262086
  */
 public class EvoluteDominoGame {
     String actualGen;
 
+    class Coefficients {
+        public static final int RANDOM = 0;
+        public static final int CROSSOVER = 1;
+
+        int method;
+        int games;
+        int won;
+        double winningRate;
+
+        String coefficients;
+
+        public Coefficients(int games, int won, String coefficients) {
+            this.games = games;
+            this.won = won;
+            this.coefficients = coefficients;
+            this.winningRate = ((double)won / (double)games) * 100.0;
+            this.method = RANDOM;
+        }
+
+        public double getWinningRate() {
+            return winningRate;
+        }
+
+        public String getCoefficients() {
+            return coefficients;
+        }
+
+        public String toString() {
+            return this.getWinningRate() + "% " + this.getCoefficients() + " (" + this.getMethod() + ")";
+        }
+
+        private void setMethod(int method) {
+            this.method = method;
+        }
+
+        private String getMethod() {
+            if (method == RANDOM)
+                return "Random";
+            else if (method == CROSSOVER)
+                return "Two-Point Crossover";
+            else
+                return "Unknown";
+        }
+    }
+
+    class CoefficientsComparator implements Comparator<Coefficients> {
+        public int compare(Coefficients o1, Coefficients o2) {
+            return (int)(o2.getWinningRate() - o1.getWinningRate());
+        }
+    }
+
     public void start() {
-        List<Double> runs = new ArrayList<Double>();
-        List<String> runsGen = new ArrayList<String>();
-        Double p;
+        List<Coefficients> randomRun = firstRun();
+        List<Coefficients> top = keepTop10(randomRun);
+        List<String> evolutions = new ArrayList<String>();
+
+        Coefficients temp;
+
+        // With the Top 10 generated genetic formulas, we will do 5 runs to evolute it, using two-point cross-over.
+        for (int m = 0; m < 5; m++) {
+            evolutions.clear();
+
+            for (int i = 0; i < top.size() - 1; i++) {
+                evolutions.add(crossOver(top.get(i).getCoefficients(), top.get(i + 1).getCoefficients()));
+                evolutions.add(crossOver(top.get(i + 1).getCoefficients(), top.get(i).getCoefficients()));
+            }
+
+            for (String gen : evolutions) {
+                saveGenToFile(gen);
+
+                temp = trialRun();
+                temp.setMethod(Coefficients.CROSSOVER);
+
+                top.add(temp);
+            }
+
+            Collections.sort(top, new CoefficientsComparator());
+        }
+
+        for (int i = 0; i < top.size(); i++) {
+            if (i >= top.size()) {
+                break;
+            }
+
+            System.out.println((i+1) + ". " + top.get(i));
+        }
+    }
+
+    // Two point cross over. X Y Y X Y
+    public String crossOver(String gen1, String gen2) {
+        String[] gen1List = StringUtils.splitString(gen1, ",");
+        String[] gen2List = StringUtils.splitString(gen2, ",");
+        String[] genOut = {gen1List[0], gen2List[1], gen2List[2], gen1List[3], gen2List[4]};
+
+        return StringUtils.join(Arrays.asList(genOut), ",");
+    }
+
+    private List<Coefficients> firstRun() {
+        // This first run generate random numbers until it gets more than 70% in winning rate. After that, it picks
+        // the best 10 combinations (with greater winning rate) to use that to start doing evolutions to the genetic algorithm.
+
+        List<Coefficients> runs = new ArrayList<Coefficients>();
+
+        Coefficients cofs;
         int c = 0;
+
         while (true) {
-            p = Evolute();
-            runs.add(p);
-            runsGen.add(actualGen);
-            System.out.println("Run: " + ++c);
-            if (p > 70.0) {
+            genRandom();
+            cofs = trialRun();
+            //System.out.println("Run: " + ++c);
+
+            if (cofs.getWinningRate() > 60) {
+                runs.add(cofs);
+            }
+
+            c++;
+
+            if (cofs.getWinningRate() > 70.0) {
                 break;
             }
         }
 
-        c = 0;
+        Collections.sort(runs, new CoefficientsComparator());
 
-        for (int i = 0; i < runs.size(); i++) {
-            System.out.println(++c + ". " + runs.get(i) + " " + runsGen.get(i));
+        for (int i = 0; i < 10; i++) {
+            if (i >= runs.size()) {
+                break;
+            }
+
+            System.out.println((i+1) + ". " + runs.get(i));
         }
 
+        System.out.println("Total runs: " + c);
+
+        return runs;
     }
 
-    private double Evolute() {
-        int games = 20;
+    private Coefficients trialRun() {
+        int games = 100;
         int won = 0;
-
-        genRandom();
 
         for (int i = 0; i < games; i++) {
             DominoGame dominoGame = new AutomationDominoGame();
@@ -78,36 +190,47 @@ public class EvoluteDominoGame {
             }
         }
 
-        double percent = ((double)won / (double)games) * 100.0;
-        System.out.println("\n\n Games Won: " + won + "/" + games + " Percent: " + percent + "%");
+        Coefficients cofs = new Coefficients(games, won, actualGen);
 
-        return percent;
+        return cofs;
     }
 
     private void genRandom() {
         Random rnd = new Random();
 
+        List<String> coefficients = new ArrayList<String>();
+        for (int i = 0; i < 5; i++) {
+            coefficients.add(i, String.valueOf(rnd.nextDouble() * 10.0));
+        }
+
+        saveGenToFile(StringUtils.join(coefficients, ","));
+    }
+
+    private void saveGenToFile(String gen) {
         try {
-            List<String> coefficients = new ArrayList<String>();
+            System.out.println(gen);
+            actualGen = gen;
+
             PrintWriter writer = new PrintWriter("actualc.txt", "UTF-8");
-
-            for (int i = 0; i < 6; i++) {
-                coefficients.add(i, String.valueOf(rnd.nextDouble() * 10.0));
-            }
-
-            actualGen = StringUtils.join(coefficients, ",");
-            writer.println(actualGen);
+            writer.println(gen);
             writer.close();
         } catch (IOException e) {
             System.out.println(e);
         }
     }
 
-    //3.0953285914037942,4.879842889240107,1.5007620482323303,5.078060055462109,4.0588295794984255,7.580321427184441 35%
-    //2.765184782081308,7.600013530020544,4.207536839134778,8.018708891868851,5.1302614547078065,1.004633636891178 35%
-    //8.40216897062409,8.931251143286179,8.970808296033956,2.906326141211455,0.0676073746418393,4.669709640780525 30%
-    //6.022264712014012,6.465003758271529,9.954783648751674,6.724694502545433,0.04602840348436721,7.358316077195215 25%
-    //3.2033815440724753,0.27174098412229397,9.364096151104262,0.46938034782391225,8.866276284577202,9.99367617040048 25%
-    //3.019526767712697,6.4384923561993945,4.351681113629834,9.317924114547019,5.368324738861724,3.8090982341738213 100%
+    private List<Coefficients> keepTop10(List<Coefficients> cofs) {
+        List<Coefficients> cofsTop = new ArrayList<Coefficients>();
 
+        for (int i = 0; i < 10; i++) {
+            if (i >= cofs.size()) {
+                break;
+            }
+
+            cofsTop.add(cofs.get(i));
+        }
+
+        cofs.clear();
+        return cofsTop;
+    }
 }

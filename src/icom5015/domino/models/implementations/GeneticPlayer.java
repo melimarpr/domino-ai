@@ -13,9 +13,6 @@ import java.util.*;
  * Created by enrique on 4/30/14.
  */
 public class GeneticPlayer extends Player {
-
-    //TODO: Implement
-
     int totalAtStart = 0;
     List<Double> coefficients;
 
@@ -32,7 +29,7 @@ public class GeneticPlayer extends Player {
             //System.out.println("Im alive!");
             if (s.hasNextLine()) {
                 String line = s.nextLine();
-                System.out.println(line);
+                //System.out.println(line);
                 String[] temp = StringUtils.splitString(line, ",");
 
                 for (String n : temp) {
@@ -44,71 +41,6 @@ public class GeneticPlayer extends Player {
             s.close();
         } catch (FileNotFoundException e) {
             System.out.println(e);
-        }
-    }
-
-    // This is a test, using min instead of max
-    public Move getDomino2(Board board) {
-        List<Domino> upperSide = getPosibleDominosList(board.getUpperValue());
-        List<Domino> lowerSide = getPosibleDominosList(board.getLowerValue());
-
-        if (upperSide.size() == 0 && lowerSide.size() == 0) {
-            System.out.println("PASS");
-            return new Move(PASS, null);
-        }
-
-        if (upperSide.size() == 0 && lowerSide.size() == 1) {
-            return new Move(Domino.LOWER_SIDE, lowerSide.get(0));
-        }
-
-        if (lowerSide.size() == 0 && upperSide.size() == 1) {
-            return new Move(Domino.UPPER_SIDE, upperSide.get(0));
-        }
-
-        int points;
-
-        double genValue;
-        double minLowerPoints = Double.MAX_VALUE;
-        Domino minLowerDomino = null;
-        double minUpperPoints = Double.MAX_VALUE;
-        Domino minUpperDomino = null;
-
-        points = board.getUpperValue();
-        for (Domino d : upperSide) {
-            genValue = geneticFormula(board, d, points);
-
-            if (genValue < minUpperPoints) {
-                minUpperPoints = genValue;
-                minUpperDomino = d;
-            }
-        }
-
-        points = board.getLowerValue();
-        for (Domino d : lowerSide) {
-            genValue = geneticFormula(board, d, points);
-
-            if (genValue < minLowerPoints) {
-                minLowerPoints = genValue;
-                minLowerDomino = d;
-            }
-        }
-
-        if (minLowerPoints < minUpperPoints) {
-            System.out.println("LOWER... " + minLowerPoints + " < " + minUpperPoints);
-            return new Move(Domino.LOWER_SIDE, minLowerDomino);
-        } else if (minUpperPoints < minLowerPoints) {
-            System.out.println("UPPER... " + minUpperPoints + " < " + minLowerPoints);
-            return new Move(Domino.UPPER_SIDE, minUpperDomino);
-        } else {
-            Random rnd = new Random();
-
-            if (rnd.nextDouble() > 0.5) {
-                System.out.println("RANDOM LOWER... " + minLowerPoints + " > " + minUpperPoints);
-                return new Move(Domino.LOWER_SIDE, minLowerDomino);
-            } else {
-                System.out.println("RANDOM UPPER... " + minUpperPoints + " > " + minLowerPoints);
-                return new Move(Domino.UPPER_SIDE, minUpperDomino);
-            }
         }
     }
 
@@ -160,22 +92,22 @@ public class GeneticPlayer extends Player {
         }
 
         if (maxLowerPoints > maxUpperPoints) {
-            System.out.println("LOWER... " + maxLowerPoints + " > " + maxUpperPoints);
+            //System.out.println("LOWER... " + maxLowerPoints + " > " + maxUpperPoints);
             hand.remove(maxLowerDomino);
             return new Move(Domino.LOWER_SIDE, maxLowerDomino);
         } else if (maxUpperPoints > maxLowerPoints) {
-            System.out.println("UPPER... " + maxUpperPoints + " > " + maxLowerPoints);
+            //System.out.println("UPPER... " + maxUpperPoints + " > " + maxLowerPoints);
             hand.remove(maxUpperDomino);
             return new Move(Domino.UPPER_SIDE, maxUpperDomino);
         } else {
             Random rnd = new Random();
 
             if (rnd.nextDouble() > 0.5) {
-                System.out.println("RANDOM LOWER... " + maxLowerPoints + " > " + maxUpperPoints);
+                //System.out.println("RANDOM LOWER... " + maxLowerPoints + " > " + maxUpperPoints);
                 hand.remove(maxLowerDomino);
                 return new Move(Domino.LOWER_SIDE, maxLowerDomino);
             } else {
-                System.out.println("RANDOM UPPER... " + maxUpperPoints + " > " + maxLowerPoints);
+                //System.out.println("RANDOM UPPER... " + maxUpperPoints + " > " + maxLowerPoints);
                 hand.remove(maxUpperDomino);
                 return new Move(Domino.UPPER_SIDE, maxUpperDomino);
             }
@@ -184,8 +116,25 @@ public class GeneticPlayer extends Player {
 
     @Override
     public Domino getFirstMoveDomino() {
-        //TODO: Omar For First Move
-        return null;
+        double genValue;
+        double maxPoints = 0.0;
+        Domino maxDomino = null;
+
+        for (Domino d : this.hand) {
+            // Special formula for first tile.
+            // The other variables and coefficients are not important because they depend on enemies and partners
+            // and since this is the first play, it will not have any effect.
+            genValue = coefficients.get(0) * d.getFullSum() + coefficients.get(1) * this.getV2(d);
+
+            if (genValue > maxPoints) {
+                maxPoints = genValue;
+                maxDomino = d;
+            }
+        }
+
+        hand.remove(maxDomino);
+
+        return maxDomino;
     }
 
     private double geneticFormula(Board board, Domino tile, int points) {

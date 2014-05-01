@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 public class GeneticMain {
 
-   /** public static void main(String[] args) {
+   public static void main(String[] args) {
         EvoluteDominoGame e = new EvoluteDominoGame();
         e.start();
 
@@ -28,9 +28,9 @@ public class GeneticMain {
         //Main to Run the Game
         /*DominoGame dominoGame = new ConsoleDominoGame();
         dominoGame.run();
-        System.out.println("Winner "+ Player.toStringPlayer(dominoGame.winner())+" with score: "+dominoGame.score());
+        System.out.println("Winner "+ Player.toStringPlayer(dominoGame.winner())+" with score: "+dominoGame.score());*/
 
 
 
-    }*/
+    }
 }
