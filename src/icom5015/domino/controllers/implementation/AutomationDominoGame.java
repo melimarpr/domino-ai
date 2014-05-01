@@ -40,7 +40,7 @@ public class AutomationDominoGame extends DominoGame {
     @Override
     public void run() {
         init();
-        generateOrder();
+        generateOrderForDoubleSix();
 
         //Pass Counter
         int passCounter = 0;

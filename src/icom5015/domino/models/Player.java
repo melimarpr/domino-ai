@@ -31,6 +31,7 @@ public abstract class Player {
 
     //Null if No Domino Found
     public abstract Move getDomino(Board board);
+    public abstract Domino getFirstMoveDomino();
 
     public String toStringHand(){
         return toStringDominoList(hand);

@@ -24,6 +24,7 @@ public class ConsoleDominoGame extends DominoGame {
     //Variables
     private boolean printAll = false;
     private boolean blind = false;
+    private boolean doubleSixStart = false;
 
     private int winner = RUNNING;
     private int score = 0;
@@ -72,6 +73,17 @@ public class ConsoleDominoGame extends DominoGame {
         setPlayerMap(handGenerator, Player.PLAYER_4, playerType);
 
 
+        //Select Double Six
+        System.out.println("Double Six Starts?");
+        System.out.println("1. Yes, 2. No");
+        int doubleSix = in.nextInt();
+
+        if(doubleSix == 1){
+            doubleSixStart = true;
+        }
+
+
+
 
     }
 
@@ -109,9 +121,9 @@ public class ConsoleDominoGame extends DominoGame {
         init();
 
 
-        if(blind){
+        if(blind || !doubleSixStart){
             Scanner in = new Scanner(System.in);
-            System.out.println("Select Player with Double Six");
+            System.out.println("Select Player that Starts");
             System.out.println("1. Player 1, 2. Player 2, 3. Player 3, 4. Player 4");
             int player = in.nextInt();
             switch (player){
@@ -133,7 +145,7 @@ public class ConsoleDominoGame extends DominoGame {
             generateOrderBlind(player);
 
         } else{
-            generateOrder();
+            generateOrderForDoubleSix();
         }
 
 
@@ -144,24 +156,37 @@ public class ConsoleDominoGame extends DominoGame {
         int passCounter = 0;
 
         Player firstPlayer = players.get(order[0]);
-        Domino doubleSix = firstPlayer.getDoubleSix();
-        Board board = new Board(doubleSix, order[0]);
+        Domino domino;
+        if(doubleSixStart)
+            domino = firstPlayer.getDoubleSix();
+        else
+            domino = firstPlayer.getFirstMoveDomino();
+        //Start Board
+        Board board = new Board(domino, order[0]);
 
         if (printAll) {
+            System.out.println("\n=====================================================================");
             System.out.println("First Player: " + Player.toStringPlayer(order[0]));
-            System.out.println("Double Six");
+            System.out.println("First Move: "+domino.toString());
+            System.out.println("=====================================================================\n");
         }
 
         //Other Players
         for (int i = 1; i < order.length; i++) {
 
             if (printAll) {
+                System.out.println("\n=====================================================================");
                 System.out.println("\nPlayer: " + Player.toStringPlayer(order[i]));
                 System.out.println("Board:");
                 System.out.println(board.toString() + "\n");
             }
 
             Player actualPlayer = players.get(order[i]);
+            if(printAll && !(actualPlayer instanceof HumanPlayer)){
+                System.out.println("\n Player Hand is:");
+                System.out.println(actualPlayer.toStringHand()+"\n");
+
+            }
             Player.Move move = actualPlayer.getDomino(board);
 
 
@@ -179,6 +204,10 @@ public class ConsoleDominoGame extends DominoGame {
                 }
             }
 
+            if(printAll){
+                System.out.println("=====================================================================\n");
+            }
+
 
 
         }
@@ -191,6 +220,7 @@ public class ConsoleDominoGame extends DominoGame {
 
                 //Print
                 if (printAll) {
+                    System.out.println("\n=====================================================================");
                     System.out.println("\nPlayer" + Player.toStringPlayer(order[i]));
                     System.out.println("Board:");
                     System.out.println(board.toString() + "\n");
@@ -218,6 +248,10 @@ public class ConsoleDominoGame extends DominoGame {
                     if(printAll){
                         System.out.println("Pass");
                     }
+                }
+
+                if(printAll){
+                    System.out.println("=====================================================================\n");
                 }
 
                 //Check For Winners

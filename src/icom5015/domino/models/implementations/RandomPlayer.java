@@ -94,4 +94,11 @@ public class RandomPlayer extends Player {
             }
         }
     }
+
+    @Override
+    public Domino getFirstMoveDomino() {
+        Random rnd = new Random();
+        int index = rnd.nextInt(hand.size());
+        return hand.remove(index);
+    }
 }

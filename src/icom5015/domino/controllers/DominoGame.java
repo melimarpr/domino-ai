@@ -22,7 +22,7 @@ public abstract class DominoGame {
     public abstract int score();
 
 
-    protected void generateOrder(){
+    protected void generateOrderForDoubleSix(){
 
         Map.Entry<Integer, Player> first = null;
         for(Map.Entry<Integer, Player> e: players.entrySet()){

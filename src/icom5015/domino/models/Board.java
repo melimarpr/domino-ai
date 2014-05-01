@@ -43,7 +43,7 @@ public class Board {
         lowerBoardNode = null;
 
         this.upperValue = center.getUpperSide();
-        this.lowerValue = center.getUpperSide();
+        this.lowerValue = center.getLowerSide();
 
         updateValue(center);
         updatePlayerList(player, center);

@@ -182,6 +182,12 @@ public class GeneticPlayer extends Player {
         }
     }
 
+    @Override
+    public Domino getFirstMoveDomino() {
+        //TODO: Omar For First Move
+        return null;
+    }
+
     private double geneticFormula(Board board, Domino tile, int points) {
         return coefficients.get(0) * this.getV1(board, tile) +
                 coefficients.get(1) * this.getV2(tile) +
@@ -236,13 +242,13 @@ public class GeneticPlayer extends Player {
     private int getPartner() {
         switch (this.getMyPlayer()) {
             case PLAYER_1:
-                return this.PLAYER_3;
+                return PLAYER_3;
             case PLAYER_2:
-                return this.PLAYER_4;
+                return PLAYER_4;
             case PLAYER_3:
-                return this.PLAYER_1;
+                return PLAYER_1;
             case PLAYER_4:
-                return this.PLAYER_2;
+                return PLAYER_2;
         }
 
         return -1;

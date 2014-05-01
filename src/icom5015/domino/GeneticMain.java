@@ -18,9 +18,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main {
+public class GeneticMain {
 
-    public static void main(String[] args) {
+   /** public static void main(String[] args) {
         EvoluteDominoGame e = new EvoluteDominoGame();
         e.start();
 
@@ -29,8 +29,8 @@ public class Main {
         /*DominoGame dominoGame = new ConsoleDominoGame();
         dominoGame.run();
         System.out.println("Winner "+ Player.toStringPlayer(dominoGame.winner())+" with score: "+dominoGame.score());
-*/
 
 
-    }
+
+    }*/
 }

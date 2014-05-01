@@ -56,6 +56,17 @@ public class BlindPlayer  extends Player{
     }
 
     @Override
+    public Domino getFirstMoveDomino() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Upperside: ");
+        int upper = in.nextInt();
+        System.out.println("Lowerside: ");
+        int lower = in.nextInt();
+        hand.remove(0);
+        return new Domino(upper, lower);
+    }
+
+    @Override
     public Domino getDoubleSix() {
         return new Domino(Domino.SIX, Domino.SIX);
     }

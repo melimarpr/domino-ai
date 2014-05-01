@@ -59,7 +59,7 @@ public class HumanPlayer extends Player {
         System.out.println("Enter Index:");
         int index = in.nextInt();
 
-
+        System.out.println("=====================================================================\n");
         if(side == 1){
             Domino domino = upperSide.get(index);
             hand.remove(domino);
@@ -71,6 +71,17 @@ public class HumanPlayer extends Player {
         }
 
         return new Move(PASS, null);
+    }
+
+    @Override
+    public Domino getFirstMoveDomino() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Hand: ");
+        System.out.println(Player.toStringDominoList(hand)+"\n");
+
+        System.out.println("Enter Index:");
+        int index = in.nextInt();
+        return hand.remove(index);
     }
 
 
