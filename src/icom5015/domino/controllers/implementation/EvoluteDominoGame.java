@@ -66,7 +66,7 @@ public class EvoluteDominoGame {
         }
     }
 
-    public void start() {
+    public void start2() {
         double winningRates = 0;
         Coefficients cof;
 
@@ -78,7 +78,7 @@ public class EvoluteDominoGame {
         System.out.println(winningRates / this.trialGames);
     }
 
-    public void start2() {
+    public void start() {
         List<Coefficients> randomRun = firstRun();
         List<Coefficients> top = keepTop10(randomRun);
         List<String> evolutions = new ArrayList<String>();
