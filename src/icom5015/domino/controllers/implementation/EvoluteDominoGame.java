@@ -4,13 +4,14 @@ import com.sun.deploy.util.StringUtils;
 import icom5015.domino.controllers.DominoGame;
 import icom5015.domino.models.Player;
 
+import javax.naming.ContextNotEmptyException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
 public class EvoluteDominoGame {
-    static final int trialGames = 100;
-    static final int roundsOfEvolution = 2;
+    static final int trialGames = 20;
+    static final int roundsOfEvolution = 3;
 
     String actualGen;
 
@@ -66,6 +67,18 @@ public class EvoluteDominoGame {
     }
 
     public void start() {
+        double winningRates = 0;
+        Coefficients cof;
+
+        for (int i = 0; i < this.trialGames; i++) {
+            cof = trialRun();
+            winningRates += cof.getWinningRate();
+        }
+
+        System.out.println(winningRates / this.trialGames);
+    }
+
+    public void start2() {
         List<Coefficients> randomRun = firstRun();
         List<Coefficients> top = keepTop10(randomRun);
         List<String> evolutions = new ArrayList<String>();

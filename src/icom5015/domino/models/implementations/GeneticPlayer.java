@@ -145,14 +145,14 @@ public class GeneticPlayer extends Player {
                 coefficients.get(4) * this.getV5(board, points);
     }
 
-    // Sum of Points in Board if the tile where throwed.
+    // Percent of Points in Board if the tile where throwed.
     private double getV1(Board board, Domino tile) {
-        return (double)(board.getTotalSum() + tile.getFullSum());
+        return (double)(board.getTotalSum() + tile.getFullSum()) / 168.0;
     }
 
-    // How much points will be left on my hand after throwing that tile.
+    // Percent of points left on my hand after throwing that tile.
     private double getV2(Domino tile) {
-        return this.getHandSum() - tile.getFullSum();
+        return (this.getHandSum() - tile.getFullSum())/this.totalAtStart;
     }
 
     // Percent of Tiles used for points to be thrown.
