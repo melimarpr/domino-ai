@@ -11,7 +11,7 @@ import java.util.*;
 
 public class EvoluteDominoGame {
     static final int trialGames = 20;
-    static final int roundsOfEvolution = 3;
+    static final int roundsOfEvolution = 2;
 
     String actualGen;
 
@@ -100,6 +100,9 @@ public class EvoluteDominoGame {
                         continue;
                     evolutions.add(crossOver(top.get(i).getCoefficients(), top.get(j).getCoefficients()));
                     evolutions.add(crossOver(top.get(j).getCoefficients(), top.get(i).getCoefficients()));
+                    if (evolutions.size() % 1000 == 0) {
+                        System.out.println(evolutions.size() + " Evolution Round: " + (m+1) + " of " + roundsOfEvolution);
+                    }
                 }
             }
 

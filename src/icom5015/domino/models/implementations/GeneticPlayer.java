@@ -152,7 +152,7 @@ public class GeneticPlayer extends Player {
 
     // Percent of points left on my hand after throwing that tile.
     private double getV2(Domino tile) {
-        return (this.getHandSum() - tile.getFullSum())/this.totalAtStart;
+        return ((double)this.getHandSum() - (double)tile.getFullSum())/(double)this.totalAtStart;
     }
 
     // Percent of Tiles used for points to be thrown.
