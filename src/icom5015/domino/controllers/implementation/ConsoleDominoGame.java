@@ -191,16 +191,18 @@ public class ConsoleDominoGame extends DominoGame {
 
 
             if (move.getPlayedSide() == Domino.UPPER_SIDE) {
+                System.out.println("\n Domino Played: "+move.getDomino().toString()+" Upper Side");
                 board.setUpperValue(move.getDomino(), order[i]);
                 passCounter = 0;
             } else if (move.getPlayedSide() == Domino.LOWER_SIDE) {
+                System.out.println("\n Domino Played: "+move.getDomino().toString()+ " Lower Side");
                 board.setLowerValue(move.getDomino(), order[i]);
                 passCounter = 0;
             } else { //Pass
                 board.setPass(order[i]);
                 passCounter++;
                 if(printAll){
-                    System.out.println("Pass");
+                    System.out.println("\nPass");
                 }
             }
 
@@ -237,9 +239,11 @@ public class ConsoleDominoGame extends DominoGame {
 
 
                 if (move.getPlayedSide() == Domino.UPPER_SIDE) {
+                    System.out.println("\n Domino Played: "+move.getDomino().toString()+" Upper Side");
                     board.setUpperValue(move.getDomino(), order[i]);
                     passCounter = 0;
                 } else if (move.getPlayedSide() == Domino.LOWER_SIDE) {
+                    System.out.println("\n Domino Played: "+move.getDomino().toString()+" Lower Side");
                     board.setLowerValue(move.getDomino(), order[i]);
                     passCounter = 0;
                 } else { //Pass

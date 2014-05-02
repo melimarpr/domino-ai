@@ -26,12 +26,9 @@ public class HandGenerator {
             return new ArrayList<Domino>();
         }
 
-
-        Collections.shuffle(dominoes);
         List<Domino> ret = new ArrayList<Domino>();
 
         for(int i = 0; i<7; i++ ){
-            dominoes.remove(0);
             ret.add(new Domino(Domino.BLIND_VALUE, Domino.BLIND_VALUE));
         }
         return ret;

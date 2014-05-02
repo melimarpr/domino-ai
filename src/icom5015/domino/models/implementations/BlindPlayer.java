@@ -68,6 +68,7 @@ public class BlindPlayer  extends Player{
 
     @Override
     public Domino getDoubleSix() {
+        hand.remove(0);
         return new Domino(Domino.SIX, Domino.SIX);
     }
 }
